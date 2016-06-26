@@ -175,6 +175,11 @@
 
 (provide 'init)
 
+(exec-path-from-shell-copy-env "GOPATH")
+
+(add-to-list 'exec-path "/Users/chenshengdong/go/bin")
+(add-hook 'before-save-hook 'gofmt-before-save)
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
