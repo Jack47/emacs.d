@@ -195,3 +195,11 @@
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
+(put 'erase-buffer 'disabled nil)
+
+;; add eshell clear function
+(defun eshell/clear ()
+  "Clear the eshell buffer."
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input)))
