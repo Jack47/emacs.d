@@ -225,3 +225,5 @@
 
 ;; delete eshell-truncate-buffer from eshell-output-filter-functions
 ;;(setq eshell-output-filter-functions (delete 'eshell-truncate-buffer eshell-output-filter-functions))
+
+(setq tramp-default-method "ssh")
