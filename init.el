@@ -227,3 +227,12 @@
 ;;(setq eshell-output-filter-functions (delete 'eshell-truncate-buffer eshell-output-filter-functions))
 
 (setq tramp-default-method "ssh")
+
+;; add go binary dir to exec-path
+(add-to-list 'exec-path "/usr/locall/go/bin/")
+
+;; Automatically gofmt when save
+(add-hook 'before-save-hook 'gofmt-before-save)
+
+;;  set minibuffer history list to unlimited size
+(setq history-length t)
