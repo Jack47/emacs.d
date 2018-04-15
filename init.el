@@ -236,3 +236,22 @@
 
 ;;  set minibuffer history list to unlimited size
 (setq history-length t)
+
+;; add jedi(python autocomplete in emacs)
+(add-hook 'python-mode-hook 'jedi:ac-setup)
+(setq jedi:complete-on-dot t)
+(setq jedi:environment-root "jedi")
+(setq jedi:environment-virtualenv
+      (list (expand-file-name "~/.virtualenvs/")))
+
+;; add virtualenv for emacs
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells)
+(venv-initialize-eshell)
+;; setting `venv-location` is not necessary if you
+;; use the default location (`~/.virtualenvs`)
+
+
+
+
+
