@@ -10,6 +10,10 @@
 (when (version< emacs-version "24.5")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
+;; exec-path-from-shell
+;;(when (memq window-system '(mac ns x))
+  ;;(exec-path-from-shell-initialize))
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-benchmarking) ;; Measure startup time
 
@@ -238,11 +242,14 @@
 (setq history-length t)
 
 ;; add jedi(python autocomplete in emacs)
-(add-hook 'python-mode-hook 'jedi:ac-setup)
 (setq jedi:complete-on-dot t)
 (setq jedi:environment-root "jedi")
-(setq jedi:environment-virtualenv
-      (list (expand-file-name "~/.virtualenvs/")))
+(setq jedi:server-args
+      '("--virtual-env" "~/.virtualenvs/cnn-udemy"))
+(add-hook 'python-mode-hook 'jedi:setup)
+
+;; (setq jedi:environment-virtualenv
+;;       (list (expand-file-name "~/.virtualenvs/")))
 
 ;; add virtualenv for emacs
 (require 'virtualenvwrapper)
@@ -250,8 +257,12 @@
 (venv-initialize-eshell)
 ;; setting `venv-location` is not necessary if you
 ;; use the default location (`~/.virtualenvs`)
+;;(setq venv-location (expand-file-name "~/.virtualenvs/"))
+
+;;(setq python-environment-directory venv-location)
 
 
 
-
-
+(use-package ensime
+             :ensure t
+             :pin melpa-stable)
