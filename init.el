@@ -40,6 +40,7 @@
   (add-hook 'emacs-startup-hook
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
+
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
@@ -233,7 +234,7 @@
 (setq tramp-default-method "ssh")
 
 ;; add go binary dir to exec-path
-(add-to-list 'exec-path "/usr/locall/go/bin/")
+(add-to-list 'exec-path "/usr/local/go/bin/")
 
 ;; Automatically gofmt when save
 (add-hook 'before-save-hook 'gofmt-before-save)
